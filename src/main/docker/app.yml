@@ -1,0 +1,14 @@
+version: '2'
+services:
+    swagger2markup-app:
+        image: swagger2markup
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://swagger2markup-mysql:3306/swagger2markup?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    swagger2markup-mysql:
+        extends:
+            file: mysql.yml
+            service: swagger2markup-mysql
